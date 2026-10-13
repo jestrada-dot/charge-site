@@ -1,3 +1,9 @@
 <!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>ChargeShare</title>
-<p>Authorization received. You can close this page.</p>
-<script>history.replaceState(null,"",location.pathname)</script>
+<style>body{font:16px system-ui;margin:2rem;max-width:40rem}code{display:block;word-break:break-all;padding:1rem;background:#eee;margin:1rem 0}</style>
+<h1>ChargeShare</h1><p id="m">No authorization code found.</p><code id="c" hidden></code>
+<script>
+var p=new URLSearchParams(location.search),c=p.get("code"),e=p.get("error");
+if(c){document.getElementById("m").textContent="Authorized. Copy this one-time code back to the bot (expires in a few minutes):";var x=document.getElementById("c");x.textContent=c;x.hidden=false}
+else if(e){document.getElementById("m").textContent="Authorization failed: "+e}
+history.replaceState(null,"",location.pathname);
+</script>
